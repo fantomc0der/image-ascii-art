@@ -41,10 +41,17 @@ dotnet build ImageAsciiArt
 dotnet run --project ImageAsciiArt -- <image-path> [options]
 ```
 
-## Key Files
+## Project Structure
 
 - `ImageAsciiArt/Program.cs` - CLI entry point
 - `ImageAsciiArt/ImageProcessor.cs` - Image loading and processing
-- `ImageAsciiArt/RenderOptions.cs` - Configuration options
+- `ImageAsciiArt/Options/` - Configuration options and enums
 - `ImageAsciiArt/Rendering/` - Renderer implementations
 - `ImageAsciiArt/Output/` - Output handler implementations
+
+## Documentation Guidelines
+
+When updating this file or other documentation:
+- List namespaces/folders and their purpose, not individual classes
+- Individual class listings fall out of sync and add maintenance burden
+- Let the code be the source of truth for class-level details

@@ -1,6 +1,7 @@
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
+using ImageAsciiArt.Options;
 using ImageAsciiArt.Output;
 using ImageAsciiArt.Rendering;
 

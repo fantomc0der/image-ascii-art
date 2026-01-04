@@ -1,3 +1,5 @@
+using ImageAsciiArt.Options;
+
 namespace ImageAsciiArt.Output;
 
 /// <summary>

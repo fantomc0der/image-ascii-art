@@ -1,5 +1,6 @@
 using System.CommandLine;
 using ImageAsciiArt;
+using ImageAsciiArt.Options;
 
 var imageArgument = new Argument<FileInfo>(
     name: "image",

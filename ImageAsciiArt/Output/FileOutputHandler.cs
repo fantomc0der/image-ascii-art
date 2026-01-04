@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using ImageAsciiArt.Options;
 
 namespace ImageAsciiArt.Output;
 
