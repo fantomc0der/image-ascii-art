@@ -67,8 +67,5 @@ public sealed class ClassicAsciiRenderer : IRenderer
     /// <summary>
     /// Calculates pixel brightness using standard luminance formula.
     /// </summary>
-    private static double CalculateBrightness(Rgba32 pixel)
-    {
-        return (0.299 * pixel.R + 0.587 * pixel.G + 0.114 * pixel.B) / 255.0;
-    }
+    private static double CalculateBrightness(Rgba32 pixel) => (0.299 * pixel.R + 0.587 * pixel.G + 0.114 * pixel.B) / 255.0;
 }

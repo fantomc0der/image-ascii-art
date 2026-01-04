@@ -17,7 +17,7 @@ public sealed class ImageProcessor
     /// <summary>
     /// Processes an image and generates ASCII art.
     /// </summary>
-    public void Process(RenderOptions options)
+    public static void Process(RenderOptions options)
     {
         ValidateInput(options);
 
@@ -134,27 +134,21 @@ public sealed class ImageProcessor
     /// <summary>
     /// Creates the appropriate renderer based on options.
     /// </summary>
-    private static IRenderer CreateRenderer(RenderOptions options)
+    private static IRenderer CreateRenderer(RenderOptions options) => options.Mode switch
     {
-        return options.Mode switch
-        {
-            RenderMode.Block => new BlockRenderer(),
-            RenderMode.Classic => new ClassicAsciiRenderer(),
-            _ => new BlockRenderer()
-        };
-    }
+        RenderMode.Block => new BlockRenderer(),
+        RenderMode.Classic => new ClassicAsciiRenderer(),
+        _ => new BlockRenderer()
+    };
 
     /// <summary>
     /// Creates the appropriate output handler based on options.
     /// </summary>
-    private static IOutputHandler CreateOutputHandler(RenderOptions options)
+    private static IOutputHandler CreateOutputHandler(RenderOptions options) => options.OutputFormat switch
     {
-        return options.OutputFormat switch
-        {
-            OutputFormat.Console => new ConsoleOutputHandler(),
-            OutputFormat.Text => new FileOutputHandler(),
-            OutputFormat.Html => new HtmlOutputHandler(),
-            _ => new ConsoleOutputHandler()
-        };
-    }
+        OutputFormat.Console => new ConsoleOutputHandler(),
+        OutputFormat.Text => new FileOutputHandler(),
+        OutputFormat.Html => new HtmlOutputHandler(),
+        _ => new ConsoleOutputHandler()
+    };
 }

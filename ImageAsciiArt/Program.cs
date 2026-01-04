@@ -162,7 +162,7 @@ rootCommand.SetHandler(async (context) =>
         }
         else
         {
-            processor.Process(options);
+            ImageProcessor.Process(options);
         }
 
         context.ExitCode = 0;
@@ -241,7 +241,7 @@ static async Task RunWatchMode(ImageProcessor processor, RenderOptions options, 
                     PreserveAnsiInTextOutput = options.PreserveAnsiInTextOutput
                 };
 
-                processor.Process(currentOptions);
+                ImageProcessor.Process(currentOptions);
             }
 
             await Task.Delay(100, cancellationToken);
