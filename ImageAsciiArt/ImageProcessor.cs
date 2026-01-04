@@ -84,8 +84,8 @@ public sealed class ImageProcessor
         var image = Image.Load<Rgba32>(options.ImagePath);
         var (targetWidth, targetHeight) = CalculateTargetSize(image, options);
 
-        // For half-block mode, we need double the pixel height since each character represents 2 pixels
-        var pixelHeight = options.Mode == RenderMode.HalfBlock ? targetHeight * 2 : targetHeight;
+        // For block mode, we need double the pixel height since each character represents 2 pixels
+        var pixelHeight = options.Mode == RenderMode.Block ? targetHeight * 2 : targetHeight;
 
         image.Mutate(x => x.Resize(new ResizeOptions
         {
@@ -138,9 +138,9 @@ public sealed class ImageProcessor
     {
         return options.Mode switch
         {
-            RenderMode.HalfBlock => new HalfBlockRenderer(),
+            RenderMode.Block => new BlockRenderer(),
             RenderMode.Classic => new ClassicAsciiRenderer(),
-            _ => new HalfBlockRenderer()
+            _ => new BlockRenderer()
         };
     }
 

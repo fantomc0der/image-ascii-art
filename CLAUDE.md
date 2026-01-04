@@ -15,7 +15,7 @@ When testing the application, always use the following parameters:
 ### Example Test Commands
 
 ```powershell
-# Test half-block mode (default, highest quality)
+# Test block mode (default, highest quality)
 .\run.ps1 sample.jpg --width 80 --height 40
 
 # Test classic ASCII mode

@@ -11,7 +11,7 @@ public enum RenderMode
     Classic,
 
     /// <summary>
-    /// Unicode half-block characters for double vertical resolution.
+    /// Unicode block characters for double vertical resolution.
     /// </summary>
-    HalfBlock
+    Block
 }

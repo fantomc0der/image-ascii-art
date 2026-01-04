@@ -11,9 +11,9 @@ public sealed class RenderOptions
     public required string ImagePath { get; init; }
 
     /// <summary>
-    /// Rendering mode (Classic ASCII or HalfBlock).
+    /// Rendering mode (Classic ASCII or Block).
     /// </summary>
-    public RenderMode Mode { get; init; } = RenderMode.HalfBlock;
+    public RenderMode Mode { get; init; } = RenderMode.Block;
 
     /// <summary>
     /// Character set to use for classic ASCII mode.

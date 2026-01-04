@@ -6,10 +6,10 @@ using ImageAsciiArt.Options;
 namespace ImageAsciiArt.Rendering;
 
 /// <summary>
-/// Renders images using Unicode half-block characters (▀) with foreground and background colors.
+/// Renders images using Unicode block characters (▀) with foreground and background colors.
 /// This effectively doubles the vertical resolution compared to classic ASCII rendering.
 /// </summary>
-public sealed class HalfBlockRenderer : IRenderer
+public sealed class BlockRenderer : IRenderer
 {
     /// <summary>
     /// Upper half block character - foreground fills top half, background fills bottom half.

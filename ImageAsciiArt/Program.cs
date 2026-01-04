@@ -11,8 +11,8 @@ var imageArgument = new Argument<FileInfo>(
 
 var modeOption = new Option<RenderMode>(
     aliases: ["--mode", "-m"],
-    getDefaultValue: () => RenderMode.HalfBlock,
-    description: "Rendering mode: 'halfblock' (high quality) or 'classic' (ASCII characters)");
+    getDefaultValue: () => RenderMode.Block,
+    description: "Rendering mode: 'block' (high quality) or 'classic' (ASCII characters)");
 
 var charsetOption = new Option<CharacterSet>(
     aliases: ["--charset", "-c"],
@@ -107,16 +107,16 @@ rootCommand.SetHandler(async (context) =>
     }
 
     // Warn about invalid option combinations
-    if (mode == RenderMode.HalfBlock)
+    if (mode == RenderMode.Block)
     {
         // Check if user explicitly provided charset (not just default)
         if (context.ParseResult.FindResultFor(charsetOption)?.Token is not null)
         {
-            Console.Error.WriteLine("Warning: --charset is ignored in halfblock mode (only applies to classic mode)");
+            Console.Error.WriteLine("Warning: --charset is ignored in block mode (only applies to classic mode)");
         }
         if (!string.IsNullOrEmpty(customChars))
         {
-            Console.Error.WriteLine("Warning: --chars is ignored in halfblock mode (only applies to classic mode)");
+            Console.Error.WriteLine("Warning: --chars is ignored in block mode (only applies to classic mode)");
         }
     }
 

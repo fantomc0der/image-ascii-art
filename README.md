@@ -4,7 +4,7 @@ A .NET 10 console application that converts images to high-quality colored ASCII
 
 ## Features
 
-- **Half-block rendering** - Uses Unicode half-block characters (▀) for double vertical resolution
+- **Block rendering** - Uses Unicode block characters (▀) for double vertical resolution
 - **Classic ASCII rendering** - Traditional ASCII character density mapping
 - **24-bit true color** - Full RGB color support using ANSI escape sequences
 - **Multiple character sets** - Standard, extended, simple, blocks, or custom
@@ -36,7 +36,7 @@ dotnet build ImageAsciiArt
 # Show help
 .\run.ps1 -?
 
-# Default: Half-block mode with auto-detected terminal size
+# Default: Block mode with auto-detected terminal size
 .\run.ps1 <image-path>
 
 # Example
@@ -46,8 +46,8 @@ dotnet build ImageAsciiArt
 ### Rendering Modes
 
 ```powershell
-# Half-block mode (default, highest quality)
-.\run.ps1 image.jpg --mode halfblock
+# Block mode (default, highest quality)
+.\run.ps1 image.jpg --mode block
 
 # Classic ASCII mode
 .\run.ps1 image.jpg --mode classic
@@ -105,7 +105,7 @@ dotnet build ImageAsciiArt
 
 | Option | Short | Description |
 |--------|-------|-------------|
-| `--mode` | `-m` | Rendering mode: `halfblock` (default) or `classic` |
+| `--mode` | `-m` | Rendering mode: `block` (default) or `classic` |
 | `--charset` | `-c` | Character set: `standard`, `extended`, `simple`, `blocks` |
 | `--chars` | | Custom character ramp (dark to light) |
 | `--width` | `-w` | Override output width in characters |
@@ -129,11 +129,11 @@ dotnet build ImageAsciiArt
 
 ## How It Works
 
-### Half-Block Mode (Default)
+### Block Mode (Default)
 1. Loads the image using ImageSharp with Lanczos3 resampling
 2. Scales to fit terminal, accounting for character aspect ratio
 3. Pairs vertical pixels: top pixel = foreground color, bottom pixel = background color
-4. Uses the upper half-block character (▀) with dual colors
+4. Uses block characters (▀) with dual colors
 5. Achieves double vertical resolution compared to classic mode
 
 ### Classic Mode
@@ -145,7 +145,7 @@ dotnet build ImageAsciiArt
 ## Examples
 
 ```powershell
-# High-quality half-block rendering
+# High-quality block rendering
 .\run.ps1 photo.png
 
 # Classic ASCII with extended character set
