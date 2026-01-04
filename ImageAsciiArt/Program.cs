@@ -106,6 +106,30 @@ rootCommand.SetHandler(async (context) =>
         return;
     }
 
+    // Warn about invalid option combinations
+    if (mode == RenderMode.HalfBlock)
+    {
+        // Check if user explicitly provided charset (not just default)
+        if (context.ParseResult.FindResultFor(charsetOption)?.Token is not null)
+        {
+            Console.Error.WriteLine("Warning: --charset is ignored in halfblock mode (only applies to classic mode)");
+        }
+        if (!string.IsNullOrEmpty(customChars))
+        {
+            Console.Error.WriteLine("Warning: --chars is ignored in halfblock mode (only applies to classic mode)");
+        }
+    }
+
+    if (string.IsNullOrEmpty(output) && preserveAnsi)
+    {
+        Console.Error.WriteLine("Warning: --preserve-ansi is ignored without --output");
+    }
+
+    if (!string.IsNullOrEmpty(output) && watch)
+    {
+        Console.Error.WriteLine("Warning: --watch is ignored when outputting to file");
+    }
+
     // If custom chars provided, use custom charset
     if (!string.IsNullOrEmpty(customChars))
     {
