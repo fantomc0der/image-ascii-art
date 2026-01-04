@@ -14,31 +14,34 @@ When testing the application, always use the following parameters:
 
 ### Example Test Commands
 
-```bash
+```powershell
 # Test half-block mode (default, highest quality)
-dotnet run --project ImageAsciiArt -- sample.jpg --width 80 --height 40
+.\run.ps1 sample.jpg --width 80 --height 40
 
 # Test classic ASCII mode
-dotnet run --project ImageAsciiArt -- sample.jpg --mode classic --width 80 --height 40
+.\run.ps1 sample.jpg --mode classic --width 80 --height 40
 
 # Test HTML output
-dotnet run --project ImageAsciiArt -- sample.jpg --output output.html --html
+.\run.ps1 sample.jpg --output output.html --html
 
 # Test text file output
-dotnet run --project ImageAsciiArt -- sample.jpg --output output.txt
+.\run.ps1 sample.jpg --output output.txt
 
 # Test grayscale mode
-dotnet run --project ImageAsciiArt -- sample.jpg --no-color --width 60 --height 20
+.\run.ps1 sample.jpg --no-color --width 60 --height 20
+
+# Show help
+.\run.ps1 -?
 ```
 
 ## Build Commands
 
-```bash
+```powershell
 # Build the project
 dotnet build ImageAsciiArt
 
-# Run with arguments
-dotnet run --project ImageAsciiArt -- <image-path> [options]
+# Run with arguments (use run.ps1 for convenience)
+.\run.ps1 <image-path> [options]
 ```
 
 ## Project Structure

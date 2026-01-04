@@ -19,11 +19,12 @@ A .NET 10 console application that converts images to high-quality colored ASCII
 ## Requirements
 
 - .NET 10 SDK
+- PowerShell (for run.ps1 convenience script)
 - A terminal that supports Unicode and ANSI 24-bit color (Windows Terminal, PowerShell, most Linux/macOS terminals)
 
 ## Installation
 
-```bash
+```powershell
 dotnet build ImageAsciiArt
 ```
 
@@ -31,70 +32,73 @@ dotnet build ImageAsciiArt
 
 ### Basic Usage
 
-```bash
+```powershell
+# Show help
+.\run.ps1 -?
+
 # Default: Half-block mode with auto-detected terminal size
-dotnet run --project ImageAsciiArt -- <image-path>
+.\run.ps1 <image-path>
 
 # Example
-dotnet run --project ImageAsciiArt -- C:\photos\cat.jpg
+.\run.ps1 C:\photos\cat.jpg
 ```
 
 ### Rendering Modes
 
-```bash
+```powershell
 # Half-block mode (default, highest quality)
-dotnet run --project ImageAsciiArt -- image.jpg --mode halfblock
+.\run.ps1 image.jpg --mode halfblock
 
 # Classic ASCII mode
-dotnet run --project ImageAsciiArt -- image.jpg --mode classic
+.\run.ps1 image.jpg --mode classic
 ```
 
 ### Character Sets (Classic Mode)
 
-```bash
+```powershell
 # Extended character set (70 characters, finest gradation)
-dotnet run --project ImageAsciiArt -- image.jpg -m classic -c extended
+.\run.ps1 image.jpg -m classic -c extended
 
 # Standard character set (10 characters)
-dotnet run --project ImageAsciiArt -- image.jpg -m classic -c standard
+.\run.ps1 image.jpg -m classic -c standard
 
 # Simple character set (5 characters)
-dotnet run --project ImageAsciiArt -- image.jpg -m classic -c simple
+.\run.ps1 image.jpg -m classic -c simple
 
 # Block characters only
-dotnet run --project ImageAsciiArt -- image.jpg -m classic -c blocks
+.\run.ps1 image.jpg -m classic -c blocks
 
 # Custom character ramp (dark to light)
-dotnet run --project ImageAsciiArt -- image.jpg -m classic --chars "@#$%^. "
+.\run.ps1 image.jpg -m classic --chars "@#$%^. "
 ```
 
 ### Output Options
 
-```bash
+```powershell
 # Save to text file (without ANSI codes)
-dotnet run --project ImageAsciiArt -- image.jpg -o output.txt
+.\run.ps1 image.jpg -o output.txt
 
 # Save to text file with ANSI codes preserved
-dotnet run --project ImageAsciiArt -- image.jpg -o output.txt --preserve-ansi
+.\run.ps1 image.jpg -o output.txt --preserve-ansi
 
 # Generate HTML file
-dotnet run --project ImageAsciiArt -- image.jpg -o output.html --html
+.\run.ps1 image.jpg -o output.html --html
 ```
 
 ### Display Options
 
-```bash
+```powershell
 # Custom dimensions
-dotnet run --project ImageAsciiArt -- image.jpg --width 80 --height 40
+.\run.ps1 image.jpg --width 80 --height 40
 
 # Grayscale output (no colors)
-dotnet run --project ImageAsciiArt -- image.jpg --no-color
+.\run.ps1 image.jpg --no-color
 
 # Invert brightness (for light terminals)
-dotnet run --project ImageAsciiArt -- image.jpg --invert
+.\run.ps1 image.jpg --invert
 
 # Live preview mode (re-renders on terminal resize)
-dotnet run --project ImageAsciiArt -- image.jpg --watch
+.\run.ps1 image.jpg --watch
 ```
 
 ## Command-Line Options
@@ -112,6 +116,7 @@ dotnet run --project ImageAsciiArt -- image.jpg --watch
 | `--invert` | `-i` | Invert brightness (for light terminals) |
 | `--watch` | | Live preview mode with auto re-render |
 | `--preserve-ansi` | | Keep ANSI codes in text file output |
+| `--help` | `-?`, `-h` | Show help and usage information |
 
 ## Supported Image Formats
 
@@ -139,19 +144,19 @@ dotnet run --project ImageAsciiArt -- image.jpg --watch
 
 ## Examples
 
-```bash
+```powershell
 # High-quality half-block rendering
-dotnet run --project ImageAsciiArt -- photo.png
+.\run.ps1 photo.png
 
 # Classic ASCII with extended character set
-dotnet run --project ImageAsciiArt -- photo.png -m classic -c extended
+.\run.ps1 photo.png -m classic -c extended
 
 # Generate HTML for sharing
-dotnet run --project ImageAsciiArt -- photo.png -o art.html --html
+.\run.ps1 photo.png -o art.html --html
 
 # Watch mode for presentations
-dotnet run --project ImageAsciiArt -- photo.png --watch
+.\run.ps1 photo.png --watch
 
 # Retro look with block characters
-dotnet run --project ImageAsciiArt -- photo.png -m classic -c blocks
+.\run.ps1 photo.png -m classic -c blocks
 ```
