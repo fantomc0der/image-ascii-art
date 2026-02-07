@@ -1,0 +1,52 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug ImageAsciiArt",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/ImageAsciiArt/bin/Debug/net10.0/ImageAsciiArt.dll",
+            "args": [
+                "${workspaceFolder}/sample.jpg"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Debug Classic Mode",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/ImageAsciiArt/bin/Debug/net10.0/ImageAsciiArt.dll",
+            "args": [
+                "${workspaceFolder}/sample.jpg",
+                "--mode", "classic",
+                "--charset", "extended"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Debug with Custom Args",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/ImageAsciiArt/bin/Debug/net10.0/ImageAsciiArt.dll",
+            "args": "${input:customArgs}",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        }
+    ],
+    "inputs": [
+        {
+            "id": "customArgs",
+            "type": "promptString",
+            "description": "All args (e.g.: sample.jpg --mode classic --width 80 --invert)",
+            "default": "sample.jpg"
+        }
+    ]
+}
